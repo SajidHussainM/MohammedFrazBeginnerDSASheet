@@ -1,0 +1,27 @@
+Question:
+
+You are given a string s of even length. Split this string into two halves of equal lengths, and let a be the first half and b be the second half.
+
+Two strings are alike if they have the same number of vowels ('a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U'). Notice that s contains uppercase and lowercase letters.
+
+Return true if a and b are alike. Otherwise, return false.
+
+
+Sol:
+
+bool halvesAreAlike(string s) {
+        int count1=0,count2=0;
+        // transform(s.begin(),s.end(),s.begin(),::tolower);
+        int mid=(s.size()/2);
+        for(int i=0;i<s.size();i++){
+            if(s[i]=='a' ||  s[i]=='A' ||  s[i]=='E' ||  s[i]=='I' ||  s[i]=='O' ||  s[i]=='U' || s[i]=='e'  || s[i]=='i' || s[i]=='o' || s[i]=='u'){
+                if(i<mid) count1++;
+                else count2++;
+            }
+        }
+        
+        if(count1==count2 ) return true;
+        
+        return false;
+        
+    }

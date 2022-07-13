@@ -1,0 +1,46 @@
+Problem Statement
+
+You are given an array of size n and a target element your goal is to return all the elements that add up to the target
+Eg: arr={2, 7, 11, 13} and target=9, so output is 2 and 7.
+
+
+Solution:
+
+1) 
+
+Time complexity: O(n)
+
+vector<pair<int,int>> twoSum(vector<int>& arr, int target, int n)
+{
+    int b=0,e=n-1;
+    vector<pair<int,int>> res;
+    sort(arr.begin(),arr.end());
+    while(b<e){
+       if(arr[b]+arr[e]==target){
+           pair<int,int> p(arr[b],arr[e]);
+           res.push_back(p);
+           b++;
+           e--;
+       } 
+        else if(arr[b]+arr[e]<target){
+            b++;
+        }
+        else if(arr[b]+arr[e]>target){
+            e--;
+        }
+    }
+    if(res.size()>0){
+        return res;
+    }
+    else{
+        pair<int,int> a(-1,-1);
+        res.push_back(a);
+         return res;
+    }
+        
+        
+    
+}
+
+
+

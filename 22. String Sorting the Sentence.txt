@@ -1,0 +1,31 @@
+Input: s = "is2 sentence4 This1 a3"
+Output: "This is a sentence"
+Explanation: Sort the words in s to their original positions "This1 is2 a3 sentence4", then remove the numbers.
+
+
+Sol:
+
+string sortSentence(string s) {
+        vector<string> ans(10);
+        string word;
+        for(int i=0;i<s.size();i++){
+            if(s[i]>='0' && s[i]<='9'){
+                ans[s[i]-'0']= word + " ";
+                word="";
+                i++;
+            }
+            else{
+                word.push_back(s[i]);
+            }
+        }
+        
+        s.clear();
+        
+        for(string v:ans){
+            s += v;
+        }
+        
+        s.pop_back();
+        
+        return s;
+    }

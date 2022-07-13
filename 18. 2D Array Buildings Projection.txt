@@ -1,0 +1,53 @@
+Problem Statement
+Ninja Land can be represented as a N * N grid in the XY plane. Each cell of this grid can have a building of some height.
+You are given a matrix ‘GRID[][]’ of size ‘N’ * ‘N’, where ‘GRID[i][j]’ gives the height of the building at cell (i, j) in XY plane. Note, building at any cell (i, j) is represented as a cuboid that is an axis aligned with the axis ‘X’, ‘Y’, ‘Z’ and has the dimension 1 * 1 * GRID[i][j] along X, Y, Z-axis respectively.
+Ninja views the projection of these buildings onto the XY, YZ, and ZX planes. A projection is like a shadow, that maps a 3-dimensional figure to a 2-dimensional plane. We are viewing the "shadow" when looking from the top, the side, and the front, in XY, YZ, ZX plane respectively.
+Your task is to find and return the total area of all three projections. See the example for more clarity.
+Note:
+ ‘GRID[i][j]’ = 0, if there is no building at cell (i, j).
+Example:
+Consider the following 2*2 ‘GRID[][]’:
+                [1, 2]
+                [3, 4]
+
+Its projection in XY, YZ, XZ plane is shown below -: 
+
+Area covered in XY plane is 4, Area covered in YZ plane is 6, Area covered in ZX plane is 7, Thus the total area is 4 + 6 + 7 = 17.
+
+
+Sol:
+
+
+int projectionArea(vector<vector<int>> &grid) {
+    // Write your code here. 
+    int sum=0;
+    //X-Y Projection
+    for(int i=0;i<grid.size();i++){
+        for(int j=0;j<grid[0].size();j++){
+            if(grid[i][j]!=0) sum++;
+        }
+    }
+    
+    //X-Z Projection
+    int maxi;
+    for(int i=0;i<grid.size();i++){
+        maxi=0;
+        for(int j=0;j<grid[0].size();j++){
+            maxi= max(grid[j][i],maxi);
+        }
+        sum += maxi;
+    }
+    
+//     //Y-Z Projection
+    
+    for(int i=0;i<grid.size();i++){
+        maxi=0;
+        for(int j=0;j<grid[0].size();j++){
+            maxi= max(grid[i][j],maxi);
+        }
+        sum += maxi;
+    }
+    
+    return sum;
+    
+}
